@@ -35,6 +35,23 @@
     <title>Archive {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
+    <header class="container-fluid fixed-top"></header>
+
+    {% if messages %}
+        <div class="message-container"></div>
+    {% endif %}
+
+    <!-- Header block -->
+    {% block page_header %}
+    {% endblock %}
+
+    <!-- Content block -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- JS block if needed at the end of the body -->
+    {% block postloadjs %}
+    {% endblock %}
 
   </body>
 </html>
