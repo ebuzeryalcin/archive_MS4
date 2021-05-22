@@ -4,6 +4,7 @@ html {
 }
 
 body {
+    background: url('/media/background_image.jpg') no-repeat center center fixed;
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
@@ -14,6 +15,70 @@ body {
     text-transform: uppercase;
 }
 
+.start-bg{
+    background-color: black;
+    color: white;
+    min-width: 260px;
+}
+
+.start-border{
+    border: 3px solid white !important;
+    min-width: 295px;
+}
+
+.main-logo-link {
+    width: fit-content;
+}
+
+.shop-button {
+    background: white;
+    color: black;
+    min-width: 260px;
+}
+
+.btn-blue {
+    background: darkblue;
+    color: white;
+}
+
+.shop-now-button:hover,
+.shop-now-button:active,
+.shop-now-button:focus,
+.btn-blue:hover,
+.btn-blue:active,
+.btn-blue:focus {
+    background: black;
+    color: white;
+}
+
 .text-black {
     color: #000 !important;
+}
+
+.border-black {
+    border: 1px solid black !important;
+}
+
+/* Media Queries */
+
+/* Container larger on big screens */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 80%;
+  }
+}
+
+/* Navbar fixed on medium and larger screen */
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 164px;
+    }
 }
