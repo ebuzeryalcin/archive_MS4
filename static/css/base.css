@@ -1,0 +1,19 @@
+  
+html {
+    height: 100%;
+}
+
+body {
+    background-size: cover;
+    height: calc(100vh - 164px);
+    color: #555;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.logo-font {
+    text-transform: uppercase;
+}
+
+.text-black {
+    color: #000 !important;
+}
