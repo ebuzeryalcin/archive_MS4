@@ -1,0 +1,34 @@
+[
+    {
+        "pk": 1,
+        "model": "books.category",
+        "fields": {
+            "name": "python",
+            "friendly_name": "Python"
+        }
+    },
+    {
+        "pk": 2,
+        "model": "books.category",
+        "fields": {
+            "name": "javascript",
+            "friendly_name": "Javascript"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "books.category",
+        "fields": {
+            "name": "java",
+            "friendly_name": "Java"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "books.category",
+        "fields": {
+            "name": "c_sharp",
+            "friendly_name": "C#"
+        }
+    }
+]
