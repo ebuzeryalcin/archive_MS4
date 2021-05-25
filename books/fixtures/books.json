@@ -3,28 +3,168 @@
         "pk": 1,
         "model": "books.book",
         "fields": {
-            "isbn": "",
-            "name": "",
-            "author": "",
-            "description": "",
-            "price": 5.00,
+            "isbn": "1449355730",
+            "name": "Learning Python, 5th Edition",
+            "author": "Mark Lutz",
+            "description": "Get a comprehensive, in-depth introduction to the core Python language with this hands-on book. Based on author Mark Lutz’s popular training course, this updated fifth edition will help you quickly write efficient, high-quality code with Python. It’s an ideal way to begin, whether you’re new to programming or a professional developer versed in other languages.",
+            "price": 33.84,
             "category": 1,
-            "image_url": "",
-            "image": ".jpg"
+            "image_url": "https://images-na.ssl-images-amazon.com/images/I/41nRJEUxePS._SX379_BO1,204,203,200_.jpg",
+            "image": "1449355730.jpg"
         }
     },
     {
         "pk": 2,
         "model": "books.book",
         "fields": {
-            "isbn": "",
-            "name": "",
-            "author": "",
-            "description": "",
-            "price": 5.00,
+            "isbn": "1491952024",
+            "name": "JavaScript: The Definitive Guide: Master the World's Most-Used Programming Language 7th Edition",
+            "author": "David Flanagan",
+            "description": "JavaScript is the programming language of the web and is used by more software developers today than any other programming language. For nearly 25 years this best seller has been the go-to guide for JavaScript programmers. The seventh edition is fully updated to cover the 2020 version of JavaScript, and new chapters cover classes, modules, iterators, generators, Promises, async/await, and metaprogramming.",
+            "price": 45.49,
+            "category": 2,
+            "image_url": "https://images-na.ssl-images-amazon.com/images/I/51wijnc-Y8L._SX379_BO1,204,203,200_.jpg",
+            "image": "1491952024.jpg"
+        }
+    },
+    {
+        "pk": 3,
+        "model": "books.book",
+        "fields": {
+            "isbn": "0134685997",
+            "name": "Effective Java 3rd Edition",
+            "author": "Joshua Bloch",
+            "description": "Since this Jolt-award winning classic was last updated in 2008, the Java programming environment has changed dramatically. Java 7 and Java 8 introduced new features and functions including, forEach() method in Iterable interface, default and static methods in Interfaces, Functional Interfaces and Lambda Expressions, Java Stream API for Bulk Data Operations on Collections, and Java IO improvements.",
+            "price": 43.86,
+            "category": 3,
+            "image_url": "https://images-na.ssl-images-amazon.com/images/I/41zLisPNN2L._SX376_BO1,204,203,200_.jpg",
+            "image": "0134685997.jpg"
+        }
+    },
+    {
+        "pk": 4,
+        "model": "books.book",
+        "fields": {
+            "isbn": "1098100964",
+            "name": "C# 9.0 in a Nutshell: The Definitive Reference 1st Edition",
+            "author": "Joseph Albahari",
+            "description": "When you have questions about C# 9.0 or .NET 5, this best-selling guide has the answers you need. C# is a language of unusual flexibility and breadth, but with its continual growth there's so much more to learn. In the tradition of O'Reilly's Nutshell guides, this thoroughly updated edition is simply the best one-volume reference to the C# language available today.",
+            "price": 55.53,
+            "category": 4,
+            "image_url": "https://images-na.ssl-images-amazon.com/images/I/41rsmPaIdfL._SX331_BO1,204,203,200_.jpg",
+            "image": "1098100964.jpg"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "books.book",
+        "fields": {
+            "isbn": "1775093328",
+            "name": "Python Basics: A Practical Introduction to Python 3",
+            "author": "David Amos",
+            "description": "What should you learn about Python in the beginning to get a strong foundation? With Python Basics, you’ll not only cover the core concepts you really need to know, but you’ll also learn them in the most efficient order with the help of practical exercises and interactive quizzes. You’ll know enough to be dangerous with Python, fast!",
+            "price": 37.99,
             "category": 1,
-            "image_url": "",
-            "image": ".jpg"
+            "image_url": "https://images-na.ssl-images-amazon.com/images/I/41LoDRM5qqL._SX331_BO1,204,203,200_.jpg",
+            "image": "1775093328.jpg"
+        }
+    },
+    {
+        "pk": 6,
+        "model": "books.book",
+        "fields": {
+            "isbn": "9781118531648",
+            "name": "JavaScript and JQuery: Interactive Front-End Web Development 1st Edition",
+            "author": "Jon Duckett",
+            "description": "This full-color book will show you how to make your websites more interactive and your interfaces more interesting and intuitive.",
+            "price": 17.45,
+            "category": 2,
+            "image_url": "https://images-na.ssl-images-amazon.com/images/I/31SRWF+LkKL._SX398_BO1,204,203,200_.jpg",
+            "image": "9781118531648.jpg"
+        }
+    },
+    {
+        "pk": 7,
+        "model": "books.book",
+        "fields": {
+            "isbn": "0136520235",
+            "name": "Introduction to Java Programming and Data Structures, Comprehensive Version 12th Edition",
+            "author": "Y. Daniel Liang",
+            "description": "Introduction to Java Programming and Data Structures seamlessly integrates programming, data structures, and algorithms into one text. With a fundamentals-first approach, the text builds a strong foundation of basic programming concepts and techniques before teaching students object-oriented programming and advanced Java programming.",
+            "price": 103.99,
+            "category": 3,
+            "image_url": "https://images-na.ssl-images-amazon.com/images/I/51lkHc6Hl1L._SX396_BO1,204,203,200_.jpg",
+            "image": "0136520235.jpg"
+        }
+    },
+    {
+        "pk": 8,
+        "model": "books.book",
+        "fields": {
+            "isbn": "1491976705",
+            "name": "Head First C#: A Learner's Guide to Real-World Programming with C# and .NET Core 4th Edition",
+            "author": "Andrew Stellman",
+            "description": "Dive into C# and create apps, user interfaces, games, and more using this fun and highly visual introduction to C#, .NET Core, and Visual Studio. With this completely updated guide, which covers C# 8.0 and Visual Studio 2019, beginning programmers like you will build a fully functional game in the opening chapter.",
+            "price": 26.78,
+            "category": 4,
+            "image_url": "https://images-na.ssl-images-amazon.com/images/I/51PVxe6UXhL._SX258_BO1,204,203,200_.jpg",
+            "image": "1491976705.jpg"
+        }
+    },
+    {
+        "pk": 9,
+        "model": "books.book",
+        "fields": {
+            "isbn": "1491946008",
+            "name": "Fluent Python: Clear, Concise, and Effective Programming 1st Edition",
+            "author": "Luciano Ramalho",
+            "description": "Python’s simplicity lets you become productive quickly, but this often means you aren’t using everything it has to offer. With this hands-on guide, you’ll learn how to write effective, idiomatic Python code by leveraging its best—and possibly most neglected—features.",
+            "price": 48.64,
+            "category": 1,
+            "image_url": "https://images-na.ssl-images-amazon.com/images/I/41R+fNX-akL._SX379_BO1,204,203,200_.jpg",
+            "image": "1491946008.jpg"
+        }
+    },
+    {
+        "pk": 10,
+        "model": "books.book",
+        "fields": {
+            "isbn": "0596517742",
+            "name": "JavaScript: The Good Parts: The Good Parts 1st Edition",
+            "author": "Douglas Crockford",
+            "description": "This authoritative book scrapes away the bad features to reveal a subset of JavaScript that's more reliable, readable, and maintainable than the language as a whole—a subset you can use to create truly extensible and efficient code.",
+            "price": 10.19,
+            "category": 2,
+            "image_url": "https://images-na.ssl-images-amazon.com/images/I/5131OWtQRaL._SX381_BO1,204,203,200_.jpg",
+            "image": "0596517742.jpg"
+        }
+    },
+    {
+        "pk": 11,
+        "model": "books.book",
+        "fields": {
+            "isbn": "0134802217",
+            "name": "Starting Out with Java: From Control Structures through Objects (What's New in Computer Science) 7th Edition",
+            "author": "Tony Gaddis",
+            "description": "Starting Out with Java: From Control Structures through Objects provides a step-by-step introduction to programming in Java. Gaddis covers procedural programming–control structures and methods–before introducing object-oriented programming to ensure that students understand fundamental programming and problem-solving concepts.",
+            "price": 36.00,
+            "category": 3,
+            "image_url": "https://images-na.ssl-images-amazon.com/images/I/41n1+1pHgpL._SX398_BO1,204,203,200_.jpg",
+            "image": "0134802217.jpg"
+        }
+    },
+    {
+        "pk": 12,
+        "model": "books.book",
+        "fields": {
+            "isbn": "1484269381",
+            "name": "Pro C# 9 with .NET 5: Foundational Principles and Practices in Programming 10th ed. Edition",
+            "author": "Andrew Troelsen",
+            "description": "This essential classic provides a comprehensive foundation in the C# programming language and the framework it lives in. Now in its 10th edition, you will find the latest C# 9 and .NET 5 features served up with plenty of Behind the curtain discussion designed to expand developers’ critical thinking skills when it comes to their craft.",
+            "price": 47.49,
+            "category": 4,
+            "image_url": "https://images-na.ssl-images-amazon.com/images/I/41xVtqWPSUS._SX351_BO1,204,203,200_.jpg",
+            "image": "1484269381.jpg"
         }
     }
 ]
