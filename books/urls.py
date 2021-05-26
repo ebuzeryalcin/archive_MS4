@@ -3,5 +3,5 @@ from . import views
 
 # The root url
 urlpatterns = [
-    path('', views.index, name='home')
+    path('', views.all_books, name='books')
 ]
