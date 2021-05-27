@@ -8,3 +8,63 @@
         </div>
     </div>
 {% endblock %}
+    <!-- Books page title -->
+    {% block content %}
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center mt-3">
+                <h2 class="logo-font">Books</h2>
+                <hr class="w-51 mb-1">
+            </div>
+        </div>
+        <!-- Bootstrap, book cards -->
+        <div class="row">
+            <div class="book-container col-10 offset-1">
+                <div class="row mt-1 mb-2"></div>
+                <div class="row">
+                    {% for book in books %}
+                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card h-100 border-0 mb-5">
+                                    <!-- Image -->
+                                {% if book.image %}
+                                <a href="">
+                                    <img class="card-img-top img-fluid" src="{{ book.image.url }}" alt="{{ book.name }}">
+                                </a>
+                                {% else %}
+                                <a href="">
+                                    <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ book.name }}">
+                                </a>
+                                {% endif %}
+                                    <!-- Name, author -->
+                                <div class="card-body pb-0">
+                                    <p class="mb-0">{{ book.name }}</p>
+                                    <p><b><i>{{ book.author }}</i></b></p>
+                                </div>
+                                <div class="card-footer bg-white pt-0 border-0 text-left">
+                                        <!-- Price and isbn -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="lead mb-0 text-left font-weight-bold">${{ book.price }}</p>
+                                            <div>
+                                                <small class="text-muted">ISBN: {{ book.isbn }}</small>
+                                            </div>
+                                                <!-- Category if there is and if not -->
+                                            <div>
+                                                {% if book.category %}
+                                                    <a href="{% url 'books' %}?categories={{ book.categories.name }}" style="text-decoration: none;">Category: {{ book.category.friendly_name }}</a>
+                                                {% else %}
+                                                    <small class="text-muted">No Category</small>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
