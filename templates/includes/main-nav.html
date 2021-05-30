@@ -18,11 +18,11 @@
                 Categories
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="categories-link">
-                <a href="" class="dropdown-item">Python</a>
-                <a href="" class="dropdown-item">Javascript</a>
-                <a href="" class="dropdown-item">Java</a>
-                <a href="" class="dropdown-item">C#</a>
-                <a href="" class="dropdown-item">All Categories</a>
+                <a href="{% url 'books' %}?category=python" class="dropdown-item">Python</a>
+                <a href="{% url 'books' %}?category=javascript" class="dropdown-item">Javascript</a>
+                <a href="{% url 'books' %}?category=java" class="dropdown-item">Java</a>
+                <a href="{% url 'books' %}?category=c_sharp" class="dropdown-item">C#</a>
+                <a href="{% url 'books' %}?category=python,javascript,java,c_sharp" class="dropdown-item">All Categories</a>
             </div>
         </li>
         <!-- Author dropdown -->
