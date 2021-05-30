@@ -28,11 +28,11 @@
                             <div class="card h-100 border-0 mb-5">
                                     <!-- Image -->
                                 {% if book.image %}
-                                <a href="">
+                                <a href="{% url 'book_detail' book.id %}">
                                     <img class="card-img-top img-fluid" src="{{ book.image.url }}" alt="{{ book.name }}">
                                 </a>
                                 {% else %}
-                                <a href="">
+                                <a href="{% url 'book_detail' book.id %}">
                                     <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ book.name }}">
                                 </a>
                                 {% endif %}
