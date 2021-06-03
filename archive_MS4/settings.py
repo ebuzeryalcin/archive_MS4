@@ -73,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',  # dont remove
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'bag.contexts.bag_contents',  # access bag from any site
             ],
         },
     },
@@ -160,3 +161,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Delivery amount
+
+DELIVERY_PRICE = 2
