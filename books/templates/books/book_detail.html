@@ -39,7 +39,7 @@
                         <small class="text-muted">ISBN: {{ book.isbn }}</small>
                     </div>
                     {% if book.category %}
-                        <a href="{% url 'books' %}?categories={{ book.categories.name }}" style="text-decoration: none;">Category: {{ book.category.friendly_name }}</a>
+                        <a href="{% url 'books' %}?category={{ book.category.name }}" style="text-decoration: none;">Category: {{ book.category.friendly_name }}</a>
                     {% else %}
                         <small class="text-muted">No Category</small>
                     {% endif %}
