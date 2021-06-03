@@ -31,8 +31,8 @@
                 Author
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="author-link">
-                <a href="" class="dropdown-item">A-Z</a>
-                <a href="" class="dropdown-item">Z-A</a>
+                <a href="{% url 'books' %}?sort=author&direction=asc" class="dropdown-item">A-Z</a>
+                <a href="{% url 'books' %}?sort=author&direction=desc" class="dropdown-item">Z-A</a>
             </div>
         </li>
     </ul>
