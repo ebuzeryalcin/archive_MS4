@@ -7,6 +7,7 @@ def bag_contents(request):
     total = 0
     product_count = 0
 
+    # if there is no books delivery shows 0
     if total >= settings.DELIVERY_PRICE:
         delivery = total + Decimal(settings.DELIVERY_PRICE)
     else:
