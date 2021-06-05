@@ -32,13 +32,6 @@
                                 <th scope="col">Subtotal</th>
                             </tr>
                         </thead>
-                        <tr>
-                            <td colspan="5" class="pt-5 text-right logo-font">
-                                <h6><strong>Bag Total: ${{ total|floatformat:2 }}</strong></h6>
-                                <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
-                                <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
-                            </td>
-                        </tr>
 
                         {% for item in bag_items %}
                             <tr>
@@ -60,6 +53,13 @@
                                 </td>
                             </tr>
                         {% endfor %}
+                        <tr>
+                            <td colspan="5" class="pt-5 text-right logo-font">
+                                <h6><strong>Bag Total: ${{ total|floatformat:2 }}</strong></h6>
+                                <h6>Delivery: ${{ delivery|floatformat:2 }}</h6>
+                                <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="5" class="text-right">
                                 <a href="{% url 'books' %}" class="btn btn-outline-black rounded-0 btn-lg">
