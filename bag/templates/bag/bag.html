@@ -39,6 +39,27 @@
                                 <h4 class="mt-4"><strong>Grand Total: ${{ grand_total|floatformat:2 }}</strong></h4>
                             </td>
                         </tr>
+
+                        {% for item in bag_items %}
+                            <tr>
+                                <td class="p-3 w-25">
+                                    <img class="img-fluid rounded" src="{{ item.book.image.url }}">
+                                </td>
+                                <td class="py-3">
+                                    <p class="my-0"><strong>{{ item.book.name }}</strong></p>
+                                    <p class="my-0 small text-muted">ISBN: {{ item.book.isbn|upper }}</p>
+                                </td>
+                                <td class="py-3">
+                                    <p class="my-0">${{ item.book.price }}</p>
+                                </td>
+                                <td class="py-3 w-25">
+                                    <p class="my-0">{{ item.quantity }}</p>
+                                </td>
+                                <td class="py-3">
+                                    <p class="my-0">${{ item.book.price }}</p>
+                                </td>
+                            </tr>
+                        {% endfor %}
                         <tr>
                             <td colspan="5" class="text-right">
                                 <a href="{% url 'books' %}" class="btn btn-outline-black rounded-0 btn-lg">
