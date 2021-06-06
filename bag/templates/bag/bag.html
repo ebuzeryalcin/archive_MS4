@@ -125,4 +125,24 @@
 {% block postloadjs %}
 {{ block.super }}
 {% include 'books/includes/quantity_input_script.html' %}
+
+<script type="text/javascript">
+    // Update quantity on click function
+    $('.update-link').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click function
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/bag/remove/${itemId}`;
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+</script>
 {% endblock %}
