@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.shortcuts import render, redirect, get_object_or_404, reverse, HttpResponse
 from django.contrib import messages
 
 from books.models import Book
@@ -39,3 +39,18 @@ def adjust_bag(request, book_id):
 
     request.session['bag'] = bag
     return redirect(reverse('view_bag'))
+
+
+def remove_from_bag(request, book_id):
+    """ Removing book from bag """
+
+    try:
+        bag = request.session.get('bag', {})
+
+        bag.pop(book_id)
+
+        request.session['bag'] = bag
+        return HttpResponse(status=200)
+
+    except Exception as e:
+        return HttpResponse(status=500)
