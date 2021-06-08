@@ -113,7 +113,11 @@
     </header>
 
     {% if messages %}
-        <div class="message-container"></div>
+        <div class="message-container">
+            {% for message in messages %}
+                {% include 'includes/toasts/toast_success.html' %}
+            {% endfor %}
+        </div>
     {% endif %}
 
     <!-- Header block -->
@@ -124,8 +128,11 @@
     {% block content %}
     {% endblock %}
 
-    <!-- JS block if needed at the end of the body -->
+    <!-- JS block - for Bootstrap toast, if there is a toast class it will be shown -->
     {% block postloadjs %}
+        <script type="text/javascript">
+            $('.toast').toast('show');
+        </script>
     {% endblock %}
 
   </body>
