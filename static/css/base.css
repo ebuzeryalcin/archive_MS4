@@ -45,6 +45,7 @@ body {
     min-width: 260px;
 }
 
+/* Overwhelming button style */
 .btn-blue {
     background: #003554;
     color: white;
@@ -89,12 +90,14 @@ body {
     color: whitesmoke;
 }
 
+/* Buttons f.ex. in bag */
 .btt-link,
 .update-link,
 .remove-item {
     cursor: pointer;
 }
 
+/* Toast message, on top */
 .message-container{
     position: fixed;
     top: 72px;
