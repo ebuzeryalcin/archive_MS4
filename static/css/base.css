@@ -113,6 +113,23 @@ body {
     height: 2px;
 }
 
+/* Toast arrow colors*/
+.arrow-success {
+    border-bottom-color: #28a745 !important;
+}
+
+.arrow-danger {
+    border-bottom-color: #dc3545 !important;
+}
+
+.arrow-warning {
+    border-bottom-color: #ffc107 !important;
+}
+
+.arrow-info {
+    border-bottom-color: #17a2b8 !important;
+}
+
 /* Media Queries */
 
 /* Container larger on big screens */

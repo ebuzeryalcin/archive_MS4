@@ -1,6 +1,6 @@
 <!-- Bootstrap toast -->
 <div class="toast custom-toast rounded-0 border-top-0" data-autohide="false">
-    <div class="arrow-up arrow-success"></div>
+    <div class="arrow-success"></div>
     <div class="w-100 toast-capper bg-success"></div>
     <div class="toast-header bg-white text-dark">
         <strong class="mr-auto logo-font">Success!</strong>
@@ -8,7 +8,23 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-    <div class="toast-body btn-blue">
-        {{ message }}        
+    <!-- Toast message and checkout button -->
+    <div class="toast-body bg-white">
+        <div class="row">
+            <div class="col">
+                {{ message }}
+                <hr class="mt-1 mb-3">
+            </div>
+        </div>
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'view_bag' %}" class="btn btn-blue btn-block rounded-0">
+                        <span class="logo-font">Secure Checkout</span>
+                        <span class="icon">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
     </div>
 </div>
