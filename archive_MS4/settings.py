@@ -63,6 +63,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'archive_MS4.urls'
 
+# Bootstrap template pack
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 TEMPLATES = [
@@ -79,6 +80,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',  # dont remove
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',  # if no image
                 'bag.contexts.bag_contents',  # access bag from any site
             ],
             'builtins': [

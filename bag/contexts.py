@@ -6,7 +6,7 @@ def bag_contents(request):
 
     bag_items = []
     total = 0
-    product_count = 0
+    book_count = 0
     delivery = 0
     bag = request.session.get('bag', {})
 
@@ -18,7 +18,7 @@ def bag_contents(request):
         # if there is no books in bag delivery shows 0
         else:
             delivery = 0
-        product_count += quantity
+        book_count += quantity
         bag_items.append({
             'item_id': item_id,
             'quantity': quantity,
@@ -31,7 +31,7 @@ def bag_contents(request):
     context = {
         'bag_items': bag_items,
         'total': total,
-        'product_count': product_count,
+        'book_count': book_count,
         'delivery': delivery,
         'grand_total': grand_total,
     }
