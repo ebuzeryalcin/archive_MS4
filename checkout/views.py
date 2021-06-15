@@ -1,7 +1,13 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from django.conf import settings
 
 from .forms import OrderForm
+# Bag contents function,calculating current bag value,imported from contexts.py
+from bag.contexts import bag_contents
+
+# Installed stripe app
+import stripe
 
 
 # To get the bag from session
@@ -10,6 +16,10 @@ def checkout(request):
     if not bag:
         messages.error(request, "Your bag is empty right now")
         return redirect(reverse('books'))
+
+    current_bag = bag_contents(request)
+    total = current_bag['grand_total']
+    stripe_total = round(total * 100)
 
     order_form = OrderForm()
     template = 'checkout/checkout.html'
