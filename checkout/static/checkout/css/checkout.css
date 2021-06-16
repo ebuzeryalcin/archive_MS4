@@ -35,3 +35,23 @@
 .order-text{
   color: #003554;
 }
+
+/* Loading effect checkout success */
+#loading-overlay {
+	display: none;
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #003554;
+    z-index: 9999; /* Makes loading page stay on top of everything except stripe popup */
+}
+
+.loading-spinner {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100%;
+}
