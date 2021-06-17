@@ -56,7 +56,6 @@ def webhook(request):
     # Use the generic one by default
     event_handler = event_map.get(event_type, handler.handle_event)
 
-    print('success!!!!!!')
     # Call the event handler with the event
     response = event_handler(event)
     return response
