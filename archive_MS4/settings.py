@@ -183,3 +183,5 @@ STRIPE_CURRENCY = 'usd'
 # Secret key can expose all private payment vulnerabilities
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+# Stripe environment webhook secret
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
