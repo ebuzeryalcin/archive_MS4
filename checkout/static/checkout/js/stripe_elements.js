@@ -51,6 +51,7 @@ card.addEventListener('change', function (event) {
 });
 
 // Handle form submit
+// Form getting values from trim forms further down below
 var form = document.getElementById('payment-form');
 // Preventing default post action
 form.addEventListener('submit', function(ev) {
@@ -60,10 +61,35 @@ form.addEventListener('submit', function(ev) {
     // Triggering loading overlay
     $('#payment-form').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);
+    // Calling the Stripe confirmCardPayment function, client secret and card details.
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
             card: card,
-        }
+            billing_details: {
+                name: $.trim(form.full_name.value),
+                phone: $.trim(form.phone_number.value),
+                email: $.trim(form.email.value),
+                address:{
+                    line1: $.trim(form.street_address1.value),
+                    line2: $.trim(form.street_address2.value),
+                    city: $.trim(form.town_or_city.value),
+                    country: $.trim(form.country.value),
+                    state: $.trim(form.county.value),
+                }
+            }
+        },
+        shipping: {
+            name: $.trim(form.full_name.value),
+            phone: $.trim(form.phone_number.value),
+            address: {
+                line1: $.trim(form.street_address1.value),
+                line2: $.trim(form.street_address2.value),
+                city: $.trim(form.town_or_city.value),
+                country: $.trim(form.country.value),
+                postal_code: $.trim(form.postcode.value),
+                state: $.trim(form.county.value),
+            }
+        },
     }).then(function(result) {
         // If there is an error message showes up
         if (result.error) {
