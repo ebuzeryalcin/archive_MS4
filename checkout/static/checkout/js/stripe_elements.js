@@ -61,56 +61,75 @@ form.addEventListener('submit', function(ev) {
     // Triggering loading overlay
     $('#payment-form').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);
-    // Calling the Stripe confirmCardPayment function, client secret and card details.
-    stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-            card: card,
-            billing_details: {
+
+    // Boolean checking if save info is checked
+    var saveInfo = Boolean($('#id-save-info').attr('checked'));
+    // From using {% csrf_token %} in the form
+    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    // Passing info and client secret to the new view
+    var postData = {
+        'csrfmiddlewaretoken': csrfToken,
+        'client_secret': clientSecret,
+        'save_info': saveInfo,
+    };
+    // Variable for new url
+    var url = '/checkout/cache_checkout_data/';
+    // Posting data to above view
+    $.post(url, postData).done(function() {
+        // Calling the Stripe confirmCardPayment function, client secret and card details.
+        stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: card,
+                billing_details: {
+                    name: $.trim(form.full_name.value),
+                    phone: $.trim(form.phone_number.value),
+                    email: $.trim(form.email.value),
+                    address:{
+                        line1: $.trim(form.street_address1.value),
+                        line2: $.trim(form.street_address2.value),
+                        city: $.trim(form.town_or_city.value),
+                        country: $.trim(form.country.value),
+                        state: $.trim(form.county.value),
+                    }
+                }
+            },
+            shipping: {
                 name: $.trim(form.full_name.value),
                 phone: $.trim(form.phone_number.value),
-                email: $.trim(form.email.value),
-                address:{
+                address: {
                     line1: $.trim(form.street_address1.value),
                     line2: $.trim(form.street_address2.value),
                     city: $.trim(form.town_or_city.value),
                     country: $.trim(form.country.value),
+                    postal_code: $.trim(form.postcode.value),
                     state: $.trim(form.county.value),
                 }
+            },
+        }).then(function(result) {
+            // If there is an error message showes up
+            if (result.error) {
+                var errorDiv = document.getElementById('card-errors');
+                var html = `
+                    <span class="icon" role="alert">
+                    <i class="fas fa-times"></i>
+                    </span>
+                    <span>${result.error.message}</span>`;
+                $(errorDiv).html(html);
+                // If error reversing submit
+                $('#payment-form').fadeToggle(100);
+                $('#loading-overlay').fadeToggle(100);
+                // Allowing user to fix card error
+                card.update({ 'disabled': false});
+                $('#submit-button').attr('disabled', false);
+            } else {
+                if (result.paymentIntent.status === 'succeeded') {
+                    // Showing success
+                    form.submit();
+                }
             }
-        },
-        shipping: {
-            name: $.trim(form.full_name.value),
-            phone: $.trim(form.phone_number.value),
-            address: {
-                line1: $.trim(form.street_address1.value),
-                line2: $.trim(form.street_address2.value),
-                city: $.trim(form.town_or_city.value),
-                country: $.trim(form.country.value),
-                postal_code: $.trim(form.postcode.value),
-                state: $.trim(form.county.value),
-            }
-        },
-    }).then(function(result) {
-        // If there is an error message showes up
-        if (result.error) {
-            var errorDiv = document.getElementById('card-errors');
-            var html = `
-                <span class="icon" role="alert">
-                <i class="fas fa-times"></i>
-                </span>
-                <span>${result.error.message}</span>`;
-            $(errorDiv).html(html);
-            // If error reversing submit
-            $('#payment-form').fadeToggle(100);
-            $('#loading-overlay').fadeToggle(100);
-            // Allowing user to fix card error
-            card.update({ 'disabled': false});
-            $('#submit-button').attr('disabled', false);
-        } else {
-            if (result.paymentIntent.status === 'succeeded') {
-                // Showing success
-                form.submit();
-            }
-        }
-    });
+        });
+    }).fail(function () {
+        // Reload page, the error will be in django messages
+        location.reload();
+    })
 });
