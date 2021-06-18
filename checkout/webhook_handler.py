@@ -23,11 +23,50 @@ class StripeWH_Handler:
         """
         Handle the payment_intent.succeeded webhook from Stripe
         """
+        # Getting from the metadata added in checkout/views.py
         intent = event.data.object
-        print(intent)
-        return HttpResponse(
-            content=f'Webhook received: {event["type"]}',
-            status=200)
+        pid = intent.id
+        bag = intent.metadata.bag
+        save_info = intent.metadata.saveinfo
+
+        billing_details = intent.charges.data[0].billing_details
+        shipping_details = intent.shipping
+        grand_total = round(intent.charges.data[0].amount / 100, 2)
+
+        # If there is no string in some shipping details its replaced with none
+        for field, value in shipping_details.address.items():
+            if value == "":
+                shipping_details.address[field] = None
+
+        # If order does not exist
+        order_exists = False
+        attempt = 1
+        while attempt <= 5:
+            # Trying to get the order from pid with iexact match to find
+            try:
+                order = Order.objects.get(
+                    full_name__iexact=shipping_details.name,
+                    email__iexact=billing_details.email,
+                    phone_number__iexact=shipping_details.phone,
+                    country__iexact=shipping_details.address.country,
+                    postcode__iexact=shipping_details.address.postal_code,
+                    town_or_city__iexact=shipping_details.address.city,
+                    street_address1__iexact=shipping_details.address.line1,
+                    street_address2__iexact=shipping_details.address.line2,
+                    county__iexact=shipping_details.address.state,
+                    grand_total=grand_total,
+                    original_bag=bag,
+                    stripe_pid=pid,
+                )
+                # If order exists
+                order_exists = True
+                return HttpResponse(
+                    content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already exists in database',
+                    status=200)
+
+            return HttpResponse(
+                content=f'Webhook received: {event["type"]}',
+                status=200)
 
         # If and when a payment has failed
     def handle_payment_intent_payment_failed(self, event):
