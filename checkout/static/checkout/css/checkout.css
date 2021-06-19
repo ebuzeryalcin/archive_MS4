@@ -36,6 +36,17 @@
   color: #003554;
 }
 
+/* Country selector text colors */
+select,
+select option {
+    color: #000000;
+}
+
+select:invalid,
+select option[value=""] {
+    color: #aab7c4 !important;
+}
+
 /* Loading effect checkout success */
 #loading-overlay {
 	display: none;
