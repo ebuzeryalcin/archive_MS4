@@ -90,6 +90,11 @@ body {
     color: whitesmoke;
 }
 
+/* Search box */
+input[name='q']::placeholder {
+    color: #aab7c4;
+}
+
 /* Buttons f.ex. in bag */
 .btt-link,
 .update-link,
@@ -137,6 +142,17 @@ body {
   .container {
     max-width: 80%;
   }
+}
+
+/* Allauth form formatting */
+
+/* Only login page remember me label is visible */
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input::placeholder {
+    color: #aab7c4;
 }
 
 /* Navbar fixed on medium and larger screen */
