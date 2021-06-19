@@ -12,6 +12,7 @@ def profile(request):
     # Returning to template
     profile = get_object_or_404(UserProfile, user=request.user)
 
+    # Post handler for profile view, when user update profile
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
