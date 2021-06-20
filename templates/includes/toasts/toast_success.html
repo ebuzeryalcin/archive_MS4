@@ -16,6 +16,7 @@
                 <hr class="mt-1 mb-3">
             </div>
         </div>
+        {% if grand_total and not on_profile_page %}
             <div class="row">
                 <div class="col">
                     <a href="{% url 'view_bag' %}" class="btn btn-blue btn-block rounded-0">
@@ -26,5 +27,6 @@
                     </a>
                 </div>
             </div>
+        {% endif %}
     </div>
 </div>
