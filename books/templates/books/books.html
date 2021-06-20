@@ -56,6 +56,13 @@
                                                 {% else %}
                                                     <small class="text-muted">No Category</small>
                                                 {% endif %}
+                                                {% if request.user.is_superuser %}
+                                                    <small class="ml-3">
+                                                        <!-- If superuser: Buttons for edit and delete book -->
+                                                        <a href="{% url 'edit_book' book.id %}">Edit</a> | 
+                                                        <a class="text-danger" href="{% url 'delete_book' book.id %}">Delete</a>
+                                                    </small>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>

@@ -82,9 +82,10 @@ def add_book(request):
         form = BookForm(request.POST, request.FILES)
         # If successful
         if form.is_valid():
-            form.save()
+            # Storing saved book
+            book = form.save()
             messages.success(request, 'Successfully added book!')
-            return redirect(reverse('add_book'))
+            return redirect(reverse('book_detail', args=[book.id]))
         # If failed
         else:
             messages.error(request, 'Failed to add book. Please ensure the form is valid.')
@@ -97,3 +98,36 @@ def add_book(request):
     }
 
     return render(request, template, context)
+
+
+def edit_book(request, book_id):
+    """ Edit a book in the store """
+    book = get_object_or_404(Book, pk=book_id)
+    if request.method == 'POST':
+        # Telling to update specifically chosen book with instance
+        form = BookForm(request.POST, request.FILES, instance=book)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated book!')
+            return redirect(reverse('book_detail', args=[book.id]))
+        else:
+            messages.error(request, 'Failed to update book. Please ensure the form is valid.')
+    else:
+        form = BookForm(instance=book)
+        messages.info(request, f'You are editing {book.name}')
+
+    template = 'books/edit_book.html'
+    context = {
+        'form': form,
+        'book': book,
+    }
+
+    return render(request, template, context)
+
+
+def delete_book(request, book_id):
+    """ Delete a book from the store, POST not required """
+    book = get_object_or_404(Book, pk=book_id)
+    book.delete()
+    messages.success(request, 'Book deleted!')
+    return redirect(reverse('books'))
