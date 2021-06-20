@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
+# Secure superuser page
+from django.contrib.auth.decorators import login_required
 
 # For profile page
 from .models import UserProfile
@@ -9,6 +11,7 @@ from .forms import UserProfileForm
 from checkout.models import Order
 
 
+@login_required
 def profile(request):
     """ To display the user's profile. """
     # Returning to template

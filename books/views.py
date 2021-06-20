@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+# Secure superuser page
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import Book, Category
 
@@ -75,8 +77,14 @@ def book_detail(request, book_id):
     return render(request, 'books/book_detail.html', context)
 
 
+@login_required
 def add_book(request):
     """ Add a book to store """
+    # If a user tries to go to add book page
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not allowed to do this.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         # FILES to successfully add image if there is
         form = BookForm(request.POST, request.FILES)
@@ -100,8 +108,14 @@ def add_book(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_book(request, book_id):
     """ Edit a book in the store """
+    # If a user tries to go to edit book page
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not allowed to do this.')
+        return redirect(reverse('home'))
+
     book = get_object_or_404(Book, pk=book_id)
     if request.method == 'POST':
         # Telling to update specifically chosen book with instance
@@ -125,8 +139,14 @@ def edit_book(request, book_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_book(request, book_id):
     """ Delete a book from the store, POST not required """
+    # If a user tries to delete book
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not allowed to do this.')
+        return redirect(reverse('home'))
+
     book = get_object_or_404(Book, pk=book_id)
     book.delete()
     messages.success(request, 'Book deleted!')
