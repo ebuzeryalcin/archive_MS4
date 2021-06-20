@@ -3,7 +3,8 @@ from django.contrib import messages
 from django.db.models import Q
 from .models import Book, Category
 
-# Create your views here.
+# Book add view
+from .forms import BookForm
 
 
 def all_books(request):
@@ -72,3 +73,27 @@ def book_detail(request, book_id):
     }
 
     return render(request, 'books/book_detail.html', context)
+
+
+def add_book(request):
+    """ Add a book to store """
+    if request.method == 'POST':
+        # FILES to successfully add image if there is
+        form = BookForm(request.POST, request.FILES)
+        # If successful
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added book!')
+            return redirect(reverse('add_book'))
+        # If failed
+        else:
+            messages.error(request, 'Failed to add book. Please ensure the form is valid.')
+    else:
+        form = BookForm()
+
+    template = 'books/add_book.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)

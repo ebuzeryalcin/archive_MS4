@@ -51,6 +51,12 @@ body {
     color: white;
 }
 
+.btn-outline-blue {
+    background: white;
+    color: black !important; /* use important to override link colors for <a> elements */
+    border: 1px solid #003554;
+}
+
 .shop-now-button:hover,
 .shop-now-button:active,
 .shop-now-button:focus,
@@ -59,6 +65,13 @@ body {
 .btn-blue:focus {
     background: black;
     color: white;
+}
+
+.btn-outline-blue:hover,
+.btn-outline-blue:active,
+.btn-outline-blue:focus {
+    background: black;
+    color: white !important;
 }
 
 .text-black {

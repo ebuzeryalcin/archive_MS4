@@ -8,6 +8,7 @@ from .forms import UserProfileForm
 # Order history view, from order model
 from checkout.models import Order
 
+
 def profile(request):
     """ To display the user's profile. """
     # Returning to template
@@ -19,8 +20,10 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile updated successfully')
-
-    form = UserProfileForm(instance=profile)
+        else:
+            messages.error(request, 'Update failed. Please ensure the form is valid.')
+    else:
+        form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
 
     template = 'profiles/profile.html'
