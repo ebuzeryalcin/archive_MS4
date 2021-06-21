@@ -35,6 +35,14 @@
         <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
 
+    {% block favicon %}
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static '/favicon/apple-touch-icon.png' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static '/favicon/favicon-32x32.png'}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static '/favicon/favicon-16x16.png' %}">
+        <link rel="manifest" href="{% static '/favicon/site.webmanifest' %}">
+        <link rel="shortcut icon" type="image/icon" href="{% static '/favicon/favicon.ico' %}">
+    {% endblock %}
+
     {% block extra_js %}
     {% endblock %}
 
@@ -46,7 +54,7 @@
       <div id="nav-top" class="row bg-white pt-lg-2 d-none d-lg-flex">
           <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
               <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                  <h2 class="logo-font text-black my-0"><strong>A</strong>RCHIVE</h2>
+                  <h2 class="logo-font text-black my-0"><strong>AЯ</strong>CHIVE</h2>
               </a>
           </div>
           <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
