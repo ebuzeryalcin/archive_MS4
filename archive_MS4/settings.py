@@ -54,6 +54,9 @@ INSTALLED_APPS = [
 
     # Other apps
     'crispy_forms',
+    'storages',
+    # storages is a part of heroku deployment process, which django
+    # needs to know about
 ]
 
 MIDDLEWARE = [
@@ -140,7 +143,6 @@ else:
     }
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -184,6 +186,30 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 # Where media files goes
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# To connect django to s3, telling which bucket django to communicate with
+if 'USE_AWS' in os.environ:
+    # Bucket Config
+    AWS_STORAGE_BUCKET_NAME = 'ebuyal-archive'
+    AWS_S3_REGION_NAME = 'eu-north-1'
+    # Important keys, keep secret so amazon dont bill credit card
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    # f str because bucket name will be interpreted and added
+    # to generate the appropriate url
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+    # Static and media files, connected to custom_storage.py
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production,
+    # with custom domain and locations
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
