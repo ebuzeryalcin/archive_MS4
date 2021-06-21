@@ -42,7 +42,7 @@ body {
 .shop-button {
     background: white;
     color: black;
-    min-width: 260px;
+    min-width: 210px;
 }
 
 /* Overwhelming button style */
@@ -187,6 +187,28 @@ input[name='q']::placeholder {
 @media (max-width: 991px) {
     .header-container {
         padding-top: 100px;
+    }
+
+    body {
+        height: calc(90vh - 100px);
+    }
+}
+
+/* Padding top to prevent navbar overlap page content */
+@media (max-width: 435px) {
+    .header-container {
+        padding-top: 140px;
+    }
+
+    body {
+        height: calc(90vh - 100px);
+    }
+}
+
+/* Padding top to prevent navbar overlap page content */
+@media (max-width: 379px) {
+    .header-container {
+        padding-top: 200px;
     }
 
     body {
