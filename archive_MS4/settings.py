@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-uf@mw2gl!q^e_+u6*(w0dv_-6vg@ga37)i^0xpj_&zh-zfm8eq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Heroku host name to allow hosts
+ALLOWED_HOSTS = ['ebuyal-archive.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -122,12 +123,19 @@ WSGI_APPLICATION = 'archive_MS4.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# When app is running on Heroku connect to postgres
+# Otherwise connect to db.sqlite3
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 
