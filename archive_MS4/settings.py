@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from os import path
+if path.exists('env.py'):
+    import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,6 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG to be true only if there is a variable called development
 DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = os.environ.get('DEVELOPMENT')
 
 # Heroku host name to allow hosts
 ALLOWED_HOSTS = ['ebuyal-archive.herokuapp.com', 'localhost']
@@ -180,6 +184,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # Telling where static files are located
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Where media files goes
 MEDIA_URL = '/media/'
