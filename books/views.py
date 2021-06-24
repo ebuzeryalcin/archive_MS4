@@ -96,7 +96,8 @@ def add_book(request):
             return redirect(reverse('book_detail', args=[book.id]))
         # If failed
         else:
-            messages.error(request, 'Failed to add book. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add book. \
+                Please ensure the form is valid.')
     else:
         form = BookForm()
 
@@ -125,7 +126,8 @@ def edit_book(request, book_id):
             messages.success(request, 'Successfully updated book!')
             return redirect(reverse('book_detail', args=[book.id]))
         else:
-            messages.error(request, 'Failed to update book. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update book. \
+                Please ensure the form is valid.')
     else:
         form = BookForm(instance=book)
         messages.info(request, f'You are editing {book.name}')
