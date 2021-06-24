@@ -1,0 +1,5 @@
+{% if item.book.image %}
+<img class="img-fluid rounded" src="{{ item.book.image.url }}" alt="{{ item.book.name }}">
+{% else %}
+<img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.book.name }}">
+{% endif %}
