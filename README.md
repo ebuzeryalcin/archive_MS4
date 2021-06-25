@@ -45,7 +45,6 @@ Page owner/admin can arrange books by adding to store, edit or delete.
 * As a new site user, I want to easily choose books and securely checkout by using an intuitive layout
 * As a new site user, I want to make a checkout without creating an account
 * As a new site user, I want to easily create an account for future purchases
-* As a new site user, I want to sort products on the books page
 * As a new site user, I want to sort books by categories
 * As a new site user, I want to sort books by price
 * As a new site user, I want to sort books by author
@@ -56,11 +55,11 @@ Page owner/admin can arrange books by adding to store, edit or delete.
 * As a returning user, I want to save my information in my profile to make purchases easily in future
 * As a returning user, I want to view order history in profile page
 
-### Site owner'as goals:
+### Site owner's goals:
 * As a site owner, I'd like to give an quick and understandable introduction of my site.
 * As a site owner, I'd like my page to be intuitive and informative for users.
 * As a site owner, I'd like my page to create, edit and delete books
-* As a site owner, I'd like to manage my site by creating, editing and deleting books and that these futures is restricted to only me and other superusers
+* As a site owner, I'd like to manage my site by creating, editing and deleting books and that these features is restricted to only me and other superusers
 * As a site owner, I'd like to have an admin login page where I can manage my books, list order history and list users
 
 
@@ -99,7 +98,7 @@ Page owner/admin can arrange books by adding to store, edit or delete.
 ## Skeleton
 
 ![Desktop and mobile wireframe sample](media/readme/wireframe/wireframe_sample.png)
-All **wireframes** can be shown **[here](/ebuzeryalcin/archive_MS4/blob/master/media/readme/wireframe/)**
+All **wireframes** can be shown **[here](media/readme/wireframe/)**
 
 ## Surface
 
@@ -175,7 +174,7 @@ After installing stripe and adding public key and secret key I got an error tell
 that I have not entered any API key. Going back to slack I was able to see that 
 people have asked about same error message. 
 
-Before looking at slack I managed to find out on the internet to add stripe api key and connected it to stripe secret key. While testing to print() error and refreshing project page an stripe error occured. At that time I had already added stripe to settings.py,
+Before looking at slack I managed to find out on the internet to add stripe api key and connected it to stripe secret key. While testing to print() error and refreshing project page an stripe error occured. At that time I had already added stripe to **settings. py**,
 and added public key and secret key to my environment variables in my Workspace, but
 error would not disappear. 
 
@@ -184,4 +183,85 @@ can occur and that basic fix could be to stop Worspace to refresh all pages conn
 to Stripe to start Workspace and test again. This time my print worked and I did not
 see any errors at the checkout page. 
 
+# Technologies Used
+* Git
+* Gitpod
+* GitHub
+- [Django](https://www.djangoproject.com/)
+- [Bootstrap5](https://getbootstrap.com/)
+- [jQuery](https://jquery.com/)
+- [Django AllAuth](https://django-allauth.readthedocs.io/en/latest/)
+- [Pillow](https://pillow.readthedocs.io/en/stable/index.html)
+- [Crispy Forms for Bootstrap5](https://github.com/django-crispy-forms/crispy-bootstrap5)
+- [Django Countries](https://pypi.org/project/django-countries/)
+- [DJ Database URL](https://pypi.org/project/dj-database-url/)
+- [Psycopg2](https://pypi.org/project/psycopg2-binary/)
+- [Gunicorn](https://pypi.org/project/gunicorn/)
+- [Boto3](https://pypi.org/project/boto3/)
+- [Django Storages](https://pypi.org/project/django-storages/)
+- [Heroku](https://heroku.com/)
+- [Postgresql](https://www.postgresql.org/)
+- [Gmail](https://mail.google.com/mail/)
+- [Google fonts](https://fonts.google.com/)
+* Python
+* Django
+* JavaScript
+* HTML5
+* CSS3
+* [HTML validator](https://validator.w3.org/)
+* [CSS validator](http://www.css-validator.org/)
+* [PEP8](http://pep8online.com/)
+* [JShint](https://jshint.com/)
+* [Chrome Dev Tools](https://developer.chrome.com/docs/devtools/)
+* [AWS](https://aws.amazon.com/)
+* Heroku
+* Jinja
+* [Favicon.io](https://favicon.io/)
+
+# Testing
+### First time visiting site testing:
+* As a new site user, I want to be able to understand what the site is offering me
+    - Visting site for the first time user sees an information text which tells to start coding journey
+    - And by clicking on the **Book Shop** button user can continue its story
+* As a new site user, I want to be able to have a quick access to books in the store
+    - User have access to the books in the store by clicking on Book Shop button and/or by using buttons on the navigation bar
+* As a new site user, I want to be able to browse and search for books
+    - Users are automatically greeted with a navigation bar, a search box and buttons with different actions of filtering books
+* As a new site user, I want to be able to see a list of books with neccessary information
+    - When user has entered books page, books are listed and general information about each book is shown before proceeding
+* As a new site user, I also want to be able to view detailed description and information about each book
+    - By clicking on desired book cover user is redirected to a book detail page with extra content about the book like book description
+* As a new site user, I want to be able to understand the purpose of this site
+    - Upon entering the page, there is a self-narrative button saying Book Shop. Also site name and the text above the shop button gives clues about site purpose
+* As a new site user, I want to easily navigate through the page
+    - The navigation bar has clear and easy to understand links exposing books by different filters
+    - There is a search box, bag link and my account link if in future user would sign up
+* As a new site user, I want to easily choose books and securely checkout by using an intuitive layout
+    - Every book is added to bag in book detail page by clicking on add to bag button, beside this button user can easily go back to books page by clicking on keep shopping button
+    - When bag is complete user sees a toast with checkout button to then continue to secure checkout
+* As a new site user, I want to make a checkout without creating an account
+    - By clicking on secure checkout when user is on bag details page, user can checkout without the need to create a profile/account
+* As a new site user, I want to easily create an account for future purchases
+    - User can create a profile/account by using the link My account link on the navigation bar or while making a secure checkout clicking on sign up link
+* As a new site user, I want to sort books by categories/price/author
+    - On the navigation bar, there are all books/categories/author buttons with drop down boxes which allows the user to select specific sorting of books
+* As a new site user, I want to change the books in my bag changing quantity and removing them
+    -  Users shopping bag has update and delete buttons to make changes
+
+### Returning user testing:
+* As a returning user, I want to log in and out on the page
+    - User can by clicking on the my account link on the navigation bar sign in to profile with username/E-mail address
+* As a returning user, I want to recover forgotten password if I would need to
+    - With Django all auth packages user can on the sign in page click on the password recovery link and proceed to recover its password
+* As a returning user, I want to save my information in my profile to make purchases easily in future
+    - On the users profile page they can personalize their profile by changing delivery information
+* As a returning user, I want to view order history in profile page
+    - On the profile page users can view their order history and check their order details by clicking on the order
+
+### Site owner testing:
+* As a site owner, I'd like my page to create, edit and delete books
+    - There is an edit button on each book card which takes the user to a form where they can edit the content and image
+    - There is an delete button on each book card
+* As a site owner, I want to the ability to create, edit and delete books to be limited to superusers
+    - By taking advantage of jinja logic, it is used in html code and @login_required decorator is used in views. py so that site security is restricted to superuser. Site owner can as mentioned above edit, delete and on the Book Management page create a new book to be added to inventory. 
 
