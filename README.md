@@ -99,6 +99,89 @@ Page owner/admin can arrange books by adding to store, edit or delete.
 ## Skeleton
 
 ![Desktop and mobile wireframe sample](media/readme/wireframe/wireframe_sample.png)
+All **wireframes** can be shown **[here](/ebuzeryalcin/archive_MS4/blob/master/media/readme/wireframe/)**
 
-Full **wireframe** can be shown **[here]()**!
+## Surface
+
+* Chosen font family is Ubuntu, gives a nice and futuristic look to overall fonts at the site. Main reason I choose Ubuntu was because it gives programming vibes and increases lust to dig into the page even more.
+* Selected color scheme is a nice dark blue color used throughout the page. This blue color is also appearing at the landing page and continues to be in buttons, texts and inside most of crispy form fields. White, whitesmoke and black color is also used in various texts and some buttons. 
+
+# Features
+## Existing Features
+Feature | Details
+--------|--------
+Sign in | Already signed up users can sign in and faster make checkouts because there is an feature to save delivery information, latest bag can also be saved to come back and make checkout
+Sign out | Sign out for security reasons, in case user device could be exposed to other people. 
+Add book | Superusers can add books to the site 
+Edit book | Superusers can edit books
+Delete book | Superusers can delete books
+Search function | The users are able to search in the book database on the search box placed on the navigation bar. Whether users is signed in or not they can use the search function
+
+## Features left to implement
+Feature | Details
+--------|--------
+Used books | For individual persons a functionality to add used education books to the site and sell them for an small amount. Books that fulfills requirements as not to be an to old  version and are in decent shape would be allowed to be sold
+Suggestion page | Page where users can suggest books that they would like have on the site so they can buy them
+Community page | Users community page where they are able to chat tou each other overall about programming and education
+#
+# Bugs and fixes during development
+### Server 500 error
+During testing of Stripe webhooks it was throwing an error 500: 
+![error 500 in stripe](media/readme/bug/stripe_wh_error.png)
+
+Charge.succeeded and payment_intent.created was successful but payment_intent.succeeded was giving an error. However I got an "AttributeError", which usually means you're calling an attribute (i.e. trying to get its value) that either doesn't exist or its name is slightly different than you're calling it.
+It seemed that saveinfo was most likely either undefined or misspelled. 
+
+![error 500 terminal](media/readme/bug/saveinfo_terminal1.png)
+
+Because I was getting KeyError: 'saveinfo' and AttributeError: saveinfo, I decided to look up where I had written this and found it here in the webhook_handler.py:
+
+![error in webhook_handler.py](media/readme/bug/wh_handler.png)
+
+My webhook was looking for intent.metadata.saveinfo and it couldn’t find it because saveinfo doesn't exist and is misspelled, a typical typo. 
+
+In Webhook_handler.py file I fixed the typo and tested webhooks again:
+
+Terminal:
+![terminal after fix](media/readme/bug/saveinfo_terminal2.png)
+
+Stripe:
+![terminal after fix](media/readme/bug/stripe_wh_success.png)
+
+After changing to intent.metadata.save_info I started the server, added books to bag and proceeded to checkout and this time I recieved webhooks succeeded and problem was solved.
+
+### POST error
+**In terminal I got:** RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while 
+maintaining POST data. Change your form to point to localhost:8000/bag/remove/10/ 
+(note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+
+deleted: /
+path('remove/<book_id>' at the end of "<book_id>" from bag, urls.py
+
+source: https://stackoverflow.com/questions/9738824/django-post-url-error
+
+### Data Error
+Console showed: Data attribute is not defined in bag.html
+
+**I added:**
+var data = {'csrfmiddlewaretoken': csrfToken}; to **bag.html** and error was solved.
+
+source: https://docs.djangoproject.com/en/3.2/ref/csrf/
+
+### Stripe API key
+**Console showed:** stripe.error.AuthenticationError: You did not provide an API key.
+
+After installing stripe and adding public key and secret key I got an error telling
+that I have not entered any API key. Going back to slack I was able to see that 
+people have asked about same error message. 
+
+Before looking at slack I managed to find out on the internet to add stripe api key and connected it to stripe secret key. While testing to print() error and refreshing project page an stripe error occured. At that time I had already added stripe to settings.py,
+and added public key and secret key to my environment variables in my Workspace, but
+error would not disappear. 
+
+Later I found out on a slack feed that this error 
+can occur and that basic fix could be to stop Worspace to refresh all pages connected
+to Stripe to start Workspace and test again. This time my print worked and I did not
+see any errors at the checkout page. 
+
 
