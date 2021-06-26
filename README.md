@@ -22,6 +22,9 @@
     1. [Additional Content](#add-cont)
     1. [Acknowledgements](#acks)
 
+![Desktop and mobile wireframe sample](media/readme/archive-mockup.PNG)
+
+Archive has been deployed to heroku and can be viewed from [here](https://ebuyal-archive.herokuapp.com/).
 
 # **Summary**
 
@@ -119,9 +122,9 @@ Search function | The users are able to search in the book database on the searc
 ## Features left to implement
 Feature | Details
 --------|--------
-Used books | For individual persons a functionality to add used education books to the site and sell them for an small amount. Books that fulfills requirements as not to be an to old  version and are in decent shape would be allowed to be sold
+Used books | For individual persons a functionality to add used education books to the site and sell them for an small amount of fee payed to site owner. Books that fulfills requirements as not being a too old version and that books are in decent shape would be allowed to be sold
 Suggestion page | Page where users can suggest books that they would like have on the site so they can buy them
-Community page | Users community page where they are able to chat tou each other overall about programming and education
+Community page | Users community page where they are able to chat with each other about programming and education
 #
 # Bugs and fixes during development
 ### Server 500 error
@@ -142,10 +145,11 @@ My webhook was looking for intent.metadata.saveinfo and it couldn’t find it be
 In Webhook_handler.py file I fixed the typo and tested webhooks again:
 
 Terminal:
+
 ![terminal after fix](media/readme/bug/saveinfo_terminal2.png)
 
 Stripe:
-![terminal after fix](media/readme/bug/stripe_wh_success.png)
+![stripe webhook](media/readme/bug/stripe_wh_success.png)
 
 After changing to intent.metadata.save_info I started the server, added books to bag and proceeded to checkout and this time I recieved webhooks succeeded and problem was solved.
 
@@ -204,7 +208,6 @@ see any errors at the checkout page.
 - [Gmail](https://mail.google.com/mail/)
 - [Google fonts](https://fonts.google.com/)
 * Python
-* Django
 * JavaScript
 * HTML5
 * CSS3
@@ -214,7 +217,6 @@ see any errors at the checkout page.
 * [JShint](https://jshint.com/)
 * [Chrome Dev Tools](https://developer.chrome.com/docs/devtools/)
 * [AWS](https://aws.amazon.com/)
-* Heroku
 * Jinja
 * [Favicon.io](https://favicon.io/)
 
@@ -264,4 +266,41 @@ see any errors at the checkout page.
     - There is an delete button on each book card
 * As a site owner, I want to the ability to create, edit and delete books to be limited to superusers
     - By taking advantage of jinja logic, it is used in html code and @login_required decorator is used in views. py so that site security is restricted to superuser. Site owner can as mentioned above edit, delete and on the Book Management page create a new book to be added to inventory. 
+
+# Testing Process
+
+## Manual Testing
+Manual testing was done throughout the development process. Often when new features were implemented, but also every now and then to make sure whole application was working properly.
+
+* Links:
+    - I will test the links in the header and mailto: in footer, and also links in toasts. Since they are inherited from the base.html file. In the header, I will test the links on all sizes and when signed in and signed out.
+        - **Result:** All links, including toasts, recovery password, sign in page and signup page, work correctly depending on screen sizes and whether user is signed in or signed out. When clicking on the mail in footer user is redirected to its mail application to write an E-mail. 
+* **Access to pages:**
+    - Users should not be able to access to admin pages without logging in, or be able to make superuser changes or edit books in the page
+    - They should not be able to use links like profile page to get into the profile without being logged in
+        - **Result:** Users with no admin account cannot access admin pages and therefore, they cannot not make changes on the page like editing books, deleting books or adding books
+        - Users trying to use profile page links are being redirected to sign in page if they are not logged in
+* **Forms:**
+    - Each field in each form with a variety of inputs such as text strings, numbers and other characters will be tested. Forms should not be submitted without fulfilling requirements
+        - Register, sign in, reset password, recover password and change password, all AllAuth's, have passed the test and would not submit if required fields is left empty
+        - Adding book to bag or updating bag have also been tested with success
+* **Checkout Form:**
+    - I will test the checkout form and ensure it is successful. I will also test how Stripe behave even though I have tested Stripe throughout the project. A check whether an E-mail is sent from archive to users E-mail will be made
+        - Checkout form whether user is logged in or logged out, Stripe Webhooks and sending E-mail are all successful
+    ![stripe 3D](media/readme/stripe_3d.PNG)
+    ![order information](media/readme/order_information.PNG)
+    ![confirmation e-mail](media/readme/archive_mail.PNG)
+
+* **Sign in and Sign out:**
+    - I will test: sign up process, sign in, sign out, change password and reset password
+        - User sign up recieves a verification E-mail sent, until then they cannot login to their profile, sign out, change password and reset password together with verification E-mail all works succesfully
+
+### Responsive testing
+* **Responsive site testing:**
+    - I will adjust the width of each page from full width, in my case 1920px, to the width of tablet and mobile phone. Modern mobile width is approximately 320px. There is a point when page content on all pages loses UX because of too small resolution. My aim have been to make all pages look good down to 320px. Each test will be tested on varieties of devices
+        - **Result:** Header is looking good up from 1920px down to approximately 317 px on all pages. When shopping bag price have 5 numbers, for example $183.96, header will overflow down if device is 317px and below. If there is 4 numbers in bag price overflow will not happen down to 292px in width
+        ![spillover](media/readme/spillover.PNG)
+        Footer has an style of font-size which is font-size: min(3vw, 15px);, so font size is changing depending on the responsive page but ony up to 15px at max size.
+        Toasts are responsive and can shrimp far more than header before losing UX design.
+        Overall pages, book page, book detail page, bag page, checkout page, checkout success page and profile page, all behave great down to 317px. I am satisfied with the test results, made on computer, laptop, mobiles(iphone11 and iphone7plus) and tablet(ipadAir).
 
