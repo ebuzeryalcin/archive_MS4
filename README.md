@@ -291,11 +291,11 @@ Manual testing was done throughout the development process. Often when new featu
         - Users trying to use profile page links are being redirected to sign in page if they are not logged in
 * **Forms:**
     - Each field in each form with a variety of inputs such as text strings, numbers and other characters will be tested. Forms should not be submitted without fulfilling requirements
-        - Register, sign in, reset password, recover password and change password, all AllAuth's, have passed the test and would not submit if required fields is left empty
+        - **Result:** Register, sign in, reset password, recover password and change password, all AllAuth's, have passed the test and would not submit if required fields is left empty
         - Adding book to bag or updating bag have also been tested with success
 * **Checkout Form:**
     - I will test the checkout form and ensure it is successful. I will also test how Stripe behave even though I have tested Stripe throughout the project. A check whether an E-mail is sent from archive to users E-mail will be made
-        - Checkout form whether user is logged in or logged out, Stripe Webhooks and sending E-mail are all successful
+        - **Result:** Checkout form whether user is logged in or logged out, Stripe Webhooks and sending E-mail are all successful
 
         ![stripe 3D](media/readme/stripe_3d.PNG)
         ![order information](media/readme/order_information.PNG)
@@ -303,7 +303,7 @@ Manual testing was done throughout the development process. Often when new featu
 
 * **Sign in and Sign out:**
     - I will test: sign up process, sign in, sign out, change password and reset password
-        - User sign up recieves a verification E-mail sent, until then they cannot login to their profile, sign out, change password and reset password together with verification E-mail all works succesfully
+        - **Result:** User sign up recieves a verification E-mail sent, until then they cannot login to their profile, sign out, change password and reset password together with verification E-mail all works succesfully
 
 ### Responsive testing
 * **Responsive site testing:**
@@ -364,3 +364,84 @@ Within **GitPod**, install following packages:
 *   [Gunicorn](https://pypi.org/project/gunicorn/) - *pip3 install gunicorn*
 *   [Boto3](https://pypi.org/project/boto3/) - *pip3 install boto3*
 *   [Django Storages](https://pypi.org/project/django-storages/) - *pip3 install django-storages*
+
+## Local Deployment
+
+These are the steps to deploy **AЯ**CHIVE locally.
+
+1.  From the application's [repository](https://github.com/ebuzeryalcin/archive_MS4), click the "code" button and download the zip of the repository.
+
+    Alternatively, you can clone the repository using the following line in your terminal:
+
+        git clone https://github.com/ebuzeryalcin/archive_MS4.git
+
+2.  Access the folder in your terminal window and install the application's required modules using the following command:
+
+        python -m pip -r requirements.txt
+
+
+## Heroku
+### How to deploy to Heroku
+
+To deploy the app to Heroku from its [GitHub repository](https://ebuyal-archive.herokuapp.com/), the following steps were taken:
+
+1. From the GitPod terminal, create **requirements.txt**, if you have not, and **Procfile** using these commands:
+
+    ```console
+    > pip3 freeze --local > requirements.txt
+    > echo web: python app.py > Procfile
+    ```
+
+2. **Push** these files to GitHub
+3. **Log In** to [Heroku](https://id.heroku.com/login)
+4. Select **Create new app** from the dropdown in the Heroku dashboard
+5. Choose a **unique name** for the app and the location nearest to you
+6. Go to the **Deploy** tab and under **Deployment method**, choose GitHub
+7. In **Connect to GitHub** enter your GitHub repository details and once found, click **Connect**
+8. Go to the **Settings** tab and under **Config Vars** choose **Reveal Config Vars**
+9. Enter the following keys and values, which must match those in the settings.py file:
+
+    |**Key**|**Value**|
+    |:-----|:-----|
+    AWS_ACCESS_KEY_ID|'AWS_ACCESS_KEY_ID'
+    AWS_SECRET_ACCESS_KEY | 'AWS_SECRET_ACCESS_KEY'
+    |DATABASE_URL|'DATABASE_URL'|
+    |EMAIL_HOST_PASS|'EMAIL_HOST_PASS'|
+    |EMAIL_HOST_USER|'EMAIL_HOST_USER'|
+    |SECRET_KEY|'SECRET_KEY'|
+    |STRIPE_PUBLIC_KEY|'STRIPE_PUBLIC_KEY'|
+    |STRIPE_SECRET_KEY|'STRIPE_SECRET_KEY'|
+    |STRIPE_WH_SECRET|'STRIPE_WH_SECRET'|
+    |USE_AWS|True|
+
+
+10. Go back to the **Deploy** tab and under **Automatic deploys** choose **Enable Automatic Deploys**
+11. Under **Manual deploy**, select **master** and click **Deploy Branch**
+12. Once the app has finished building, click **Open/view app** from the header row of the dashboard
+****
+
+# Credits
+## Book Content
+
+ISBN | URL
+--------|--------
+1449355730| https://www.amazon.com/Learning-Python-5th-Mark-Lutz/dp/1449355730
+1491952024| https://www.amazon.com/JavaScript-Definitive-Most-Used-Programming-Language/dp/1491952024/ref=sr_1_1?dchild=1&keywords=1491952024&qid=1624754235&s=books&sr=1-1
+0134685997|	https://www.amazon.com/Effective-Java-Joshua-Bloch/dp/0134685997/ref=sr_1_1?dchild=1&keywords=0134685997&qid=1624754432&s=books&sr=1-1
+1098100964|	https://www.amazon.com/C-9-0-Nutshell-Definitive-Reference/dp/1098100964/ref=sr_1_1?dchild=1&keywords=1098100964&qid=1624754464&s=books&sr=1-1
+1775093328|	https://www.amazon.com/Python-Basics-Practical-Introduction/dp/1775093328/ref=sr_1_1?dchild=1&keywords=1775093328&qid=1624754486&s=books&sr=1-1
+9781118531648| https://www.amazon.com/JavaScript-JQuery-Interactive-Front-End-Development/dp/1118531647/ref=sr_1_1?dchild=1&keywords=9781118531648&qid=1624754523&s=books&sr=1-1
+0136520235|	https://www.amazon.com/Introduction-Programming-Structures-Comprehensive-Version/dp/0136520235/ref=sr_1_1?dchild=1&keywords=0136520235&qid=1624754598&s=books&sr=1-1
+1491976705|	https://www.amazon.com/Head-First-Learners-Real-World-Programming/dp/1491976705/ref=sr_1_1?dchild=1&keywords=1491976705&qid=1624754627&s=books&sr=1-1
+1491946008|	https://www.amazon.com/Fluent-Python-Concise-Effective-Programming/dp/1491946008/ref=sr_1_1?dchild=1&keywords=1491946008&qid=1624754668&s=books&sr=1-1
+0596517742|	https://www.amazon.com/s?k=0596517742&i=stripbooks-intl-ship&ref=nb_sb_noss
+0134802217|	https://www.amazon.com/Starting-Out-Java-Structures-Computer/dp/0134802217/ref=sr_1_1?dchild=1&keywords=0134802217&qid=1624754732&s=books&sr=1-1
+1484269381|	https://www.amazon.com/Pro-NET-Foundational-Principles-Programming/dp/1484269381/ref=sr_1_1?dchild=1&keywords=1484269381&qid=1624754772&s=books&sr=1-1
+
+****
+## Acknowledgements
+
+-   This site is meant for educational use
+-   [Felipe Alarcon](https://github.com/fandressouza) who has provided me with guidance and support through the project. His helpful feedbacks and advices are truly appreciated
+-   Team at the Code Institute and Slack community, helped throughout the development process
+-   I am fortunate to have a supportive family that has motivated me throughout the project
