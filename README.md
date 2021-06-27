@@ -10,23 +10,24 @@
     1. [Surface](#surface)
 1. [Features](#features)
     1. [Existing Features](#existing-features)
-    1. [Features left to implement](#left-to)
+    1. [Features left to implement](#Features-left-to-implement)
 1. [Bugs](#bugs)
-1. [Technologies used](#tech)
+1. [Technologies used](#Technologies-used)
 1. [Testing](#testing)
 1. [Deployment](#deployment)
-    1. [Github Pages](#github)
+    1. [Local deployment](#Local-deployment)
     1. [heroku](#heroku)
 1. [Credits](#credits)
-    1. [Content](#content)
-    1. [Additional Content](#add-cont)
-    1. [Acknowledgements](#acks)
+    1. [Book Content](#book-content)
+    1. [Acknowledgements](#Acknowledgements)
+
+#
 
 ![Desktop and mobile wireframe sample](media/readme/archive-mockup.PNG)
 
-Archive has been deployed to heroku and can be viewed from [here](https://ebuyal-archive.herokuapp.com/).
+Archive has been deployed to heroku and can be viewed from [here](https://ebuyal-archive.herokuapp.com/)
 
-# **Summary**
+# Summary
 
 Archive is an e-commerce store selling **programming** books. 
 
@@ -86,6 +87,10 @@ Page owner/admin can arrange books by adding to store, edit or delete.
 * Clear links, buttons and overall easy for eye design of the site so users can focus on main reason they are visiting this page, to go ahead and make a purchase 
 
 ## Structure
+### Database Schema
+
+![Data schema](media/readme/data_schema.png)
+
 ### Interaction design:
 * User friendly interface to ensure usability and to encourage the user to return
 * Eyecatching and responsive design with buttons and links which can change on hover to provide users understandable actions to navigate through the site
@@ -118,15 +123,19 @@ Add book | Superusers can add books to the site
 Edit book | Superusers can edit books
 Delete book | Superusers can delete books
 Search function | The users are able to search in the book database on the search box placed on the navigation bar. Whether users is signed in or not they can use the search function
+Sort function | Users can sort books by category, price and author
+Shopping bag | Users add books to bag and can update quantity or delete books in the bag page
+Payment | Users add books to shopping bag and proceed to secure checkout to make payment with credit card
 
 ## Features left to implement
 Feature | Details
 --------|--------
 Used books | For individual persons a functionality to add used education books to the site and sell them for an small amount of fee payed to site owner. Books that fulfills requirements as not being a too old version and that books are in decent shape would be allowed to be sold
-Suggestion page | Page where users can suggest books that they would like have on the site so they can buy them
+Book suggestion page | Page where users can suggest books that they would like have on the site so they can buy them
 Community page | Users community page where they are able to chat with each other about programming and education
 #
-# Bugs and fixes during development
+# Bugs
+## Bugs and fixes during development
 ### Server 500 error
 During testing of Stripe webhooks it was throwing an error 500: 
 ![error 500 in stripe](media/readme/bug/stripe_wh_error.png)
@@ -287,9 +296,10 @@ Manual testing was done throughout the development process. Often when new featu
 * **Checkout Form:**
     - I will test the checkout form and ensure it is successful. I will also test how Stripe behave even though I have tested Stripe throughout the project. A check whether an E-mail is sent from archive to users E-mail will be made
         - Checkout form whether user is logged in or logged out, Stripe Webhooks and sending E-mail are all successful
-    ![stripe 3D](media/readme/stripe_3d.PNG)
-    ![order information](media/readme/order_information.PNG)
-    ![confirmation e-mail](media/readme/archive_mail.PNG)
+
+        ![stripe 3D](media/readme/stripe_3d.PNG)
+        ![order information](media/readme/order_information.PNG)
+        ![confirmation e-mail](media/readme/archive_mail.PNG)
 
 * **Sign in and Sign out:**
     - I will test: sign up process, sign in, sign out, change password and reset password
@@ -297,10 +307,60 @@ Manual testing was done throughout the development process. Often when new featu
 
 ### Responsive testing
 * **Responsive site testing:**
-    - I will adjust the width of each page from full width, in my case 1920px, to the width of tablet and mobile phone. Modern mobile width is approximately 320px. There is a point when page content on all pages loses UX because of too small resolution. My aim have been to make all pages look good down to 320px. Each test will be tested on varieties of devices
-        - **Result:** Header is looking good up from 1920px down to approximately 317 px on all pages. When shopping bag price have 5 numbers, for example $183.96, header will overflow down if device is 317px and below. If there is 4 numbers in bag price overflow will not happen down to 292px in width
-        ![spillover](media/readme/spillover.PNG)
-        Footer has an style of font-size which is font-size: min(3vw, 15px);, so font size is changing depending on the responsive page but ony up to 15px at max size.
-        Toasts are responsive and can shrimp far more than header before losing UX design.
-        Overall pages, book page, book detail page, bag page, checkout page, checkout success page and profile page, all behave great down to 317px. I am satisfied with the test results, made on computer, laptop, mobiles(iphone11 and iphone7plus) and tablet(ipadAir).
+    - I will adjust the width of each page from full width, in my case 1920px, to the width of tablet and mobile phone. Modern mobile width is approximately 320px. There is a point when page content on all pages loses UX because of too small resolution. My aim have been to make all pages look good down to 320px. Each test will be tested on varieties of devices. All tests will be made on computer(1920px), laptop, mobiles(iphone 11 and iphone 7 plus) and tablet(Ipad Air).
+    - **Results:** 
+        - **Header** is looking good up from 1920px down to approximately 317 px on all pages. When shopping bag price have 5 numbers, for example $183.96, header will overflow down if device is 317px and below. If there is 4 numbers in bag price overflow will not happen down to 292px in width. Toasts are responsive and can shrimp far more than header before losing its UX design look
 
+            ![spillover](media/readme/spillover.PNG)
+        
+        - **Footer** has an style of font-size which is font-size: min(3vw, 15px);, so font size is changing depending on the responsive page but ony up to 15px at max size.
+        Overall pages, book page, book detail page, bag page, checkout page, checkout success page and profile page, all behave great down to 317px.
+        - **Home** page is responsively shrimping down to 300px without losing UX design
+        - **Books page including book detail page** are not lacking of UX design pretty much like what is said about header. Images behave right and are responsive, and the same for book detail page.
+        - **Bag, checkout and checkout success** pages are behaving well. Book columns are styled to fit even really small screens. The forms and buttons are also responsive.
+        - **Profile** page delivers responsive form fields and order history list adapts to small screens by adding rows so texts do not overlap each other
+
+I am satisfied with the test results, made on computer(1920px), laptop, mobiles(iphone 11 and iphone 7 plus) and tablet(Ipad Air).
+
+# Code Validation
+## Python
+* Validated python code with [PEP8](http://pep8online.com/) to fulfill requirements and compliant. Made sure not to make any changes on migrations, django.contrib.admin and other important that should not be changed in any way as keys in env. py. Usual errors like ”line too long (91 > 79 characters)” and ” continuation line missing indentation or outdented” were fixed successfully and paython code is now PEP8 compliant and valid. 
+
+## HTML
+* **All HTML** pages were tested with the [HTML Validator](https://validator.w3.org/) resulted in errors where the Jinja template language and was used and giving Error: Duplicate ID, but none of these are actual errors within the code itself
+    - **Header**, **Footer**, **Toasts**, **Home**, **Books**, **Book Details**, **Bag**, **Checkout**, **Checkout Success** and **Profile** had no errors other than expected errors mentioned above
+
+## CSS
+* CSS validation with the [W3C Jigsaw Validator](https://jigsaw.w3.org/css-validator/) returned no errors and the code complies to the W3C standards
+
+## JavaScript
+* JavaScript files within the checkout app and profiles app threw a warning about older browser versions. I decided to ignore these as they relates to older browser versions: 'template literal syntax' is only available in ES6 (use 'esversion: 6'). There are no other errors. All Javascript were validated with [JShint](https://jshint.com/) and passed the test
+
+# Deployment
+## Installation Prerequisites
+
+To be able to run the project the following technologies will be need to be in intalled in your IDE environment.
+- Python3
+- Git 
+- pip3
+
+You will need to be signed up to the following services:
+- [Heroku](https://signup.heroku.com/?c=70130000000NeLCAA0&gclid=Cj0KCQjwpdqDBhCSARIsAEUJ0hMbGWS3dMlZowadFExUalBu2L_UVf27xViAk9dBlCKLsRQI7V2PuScaAmCPEALw_wcB)
+- [AWS](https://aws.amazon.com/)
+- [Stripe](https://stripe.com/gb)
+- [Gmail](https://mail.google.com/)
+
+### Packages Installed
+Within **GitPod**, install following packages:
+*   [Django](https://www.djangoproject.com/) - *pip3 install django*
+*   [Django AllAuth](https://django-allauth.readthedocs.io/en/latest/) - *pip3 install django-allauth*
+*   [Pillow](https://pillow.readthedocs.io/en/stable/index.html) - *pip3 install pillow*
+*   [Crispy Forms](https://github.com/django-crispy-forms/crispy-bootstrap5) - *pip3 install django-crispy-forms*
+*   [Crispy Forms for Bootstrap5](https://github.com/django-crispy-forms/crispy-bootstrap5) - *pip3 install crispy-bootstrap5*
+*   [Stripe](https://stripe.com/docs/api) - *pip3 install stripe*
+*   [Django Countries](https://pypi.org/project/django-countries/) - *pip3 install django-countries*
+*   [DJ Database URL](https://pypi.org/project/dj-database-url/) - *pip3 install dj_database_url*
+*   [Psycopg2](https://pypi.org/project/psycopg2-binary/) - *pip3 install psycopg2-binary*
+*   [Gunicorn](https://pypi.org/project/gunicorn/) - *pip3 install gunicorn*
+*   [Boto3](https://pypi.org/project/boto3/) - *pip3 install boto3*
+*   [Django Storages](https://pypi.org/project/django-storages/) - *pip3 install django-storages*
