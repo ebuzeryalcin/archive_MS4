@@ -442,6 +442,7 @@ ISBN | URL
 ## Acknowledgements
 
 -   This site is meant for educational use
+-   During development I followed Code Institute Boutique Ado mini-project guidance and instructions, which helped me throughout this project.
 -   [Felipe Alarcon](https://github.com/fandressouza) who has provided me with guidance and support through the project. His helpful feedbacks and advices are truly appreciated
 -   Team at the Code Institute and Slack community, helped throughout the development process
 -   I am fortunate to have a supportive family that has motivated me throughout the project
